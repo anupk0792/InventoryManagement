@@ -1,0 +1,45 @@
+<div class="container">
+
+
+<div style="float: left;">
+
+  <button href="#" (click)="showNewForm()"  class="btn btn-success">Add New Product</button>
+<br>
+    <table class="table table-bordered" style="margin-top: 10px;">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Category</th>
+        <th scope="col">ImageURL</th>
+        <th scope="col">Price</th>
+        <th width="220px">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let product of allproducts">
+        <td>{{ product.productId }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.category }}</td>
+        <td>{{ product.imageUrl }}</td>
+        <td>{{ product.price }}</td>
+        <td>
+          <button type="button" (click)="editProduct(product.productId)" class="btn btn-primary" style="margin-right: 10px;">Edit</button>
+          <button type="button" (click)="deleteProduct(product.productId)" class="btn btn-danger">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+
+</div>
+<div style="float: right;" *ngIf="addNewProduct">
+<app-addproduct (addedProduct)="receivedProduct($event)"></app-addproduct>
+</div>
+
+<div style="float: right;" *ngIf="updateProduct">
+  <app-editproduct [editableProductId]=editableProductId (editedProduct)="receivedEditedProduct($event)"></app-editproduct>
+  </div>
+
+  </div>

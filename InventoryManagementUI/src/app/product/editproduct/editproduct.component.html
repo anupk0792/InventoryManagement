@@ -1,0 +1,83 @@
+<div class="container">
+  <h1>Edit Product</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submitEditProduct()">
+
+      <div class="form-group">
+          <label for="productId">Product Id: </label>
+          <input
+              formControlName="productId"
+              id="productId"
+              type="text"
+              [(ngModel)]="editedProductById.productId"
+              class="form-control" readonly>
+      </div>
+
+      <div class="form-group">
+          <label for="name">Name</label>
+          <input
+              formControlName="name"
+              id="name"
+              type="text"
+              [(ngModel)]="editedProductById.name"
+              class="form-control">
+          <div *ngIf="f.name.touched && f.name.invalid" class="alert alert-danger">
+              <div *ngIf="f.name.errors?.required">Name is required.</div>
+          </div>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description:</label>
+        <input
+            formControlName="description"
+            id="description"
+            type="text"
+            [(ngModel)]="editedProductById.description"
+            class="form-control">
+        <div *ngIf="f.description.touched && f.description.invalid" class="alert alert-danger">
+            <div *ngIf="f.description.errors?.required">Description is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="category">Category</label>
+        <input
+            formControlName="category"
+            id="category"
+            type="text"
+            [(ngModel)]="editedProductById.category"
+            class="form-control">
+        <div *ngIf="f.category.touched && f.category.invalid" class="alert alert-danger">
+            <div *ngIf="f.category.errors?.required">category is required.</div>
+        </div>
+    </div>
+
+    <div class="form-group">
+      <label for="imageUrl">ImageUrl:</label>
+      <input
+          formControlName="imageUrl"
+          id="imageUrl"
+          type="text"
+          [(ngModel)]="editedProductById.imageUrl"
+          class="form-control">
+      <div *ngIf="f.imageUrl.touched && f.imageUrl.invalid" class="alert alert-danger">
+          <div *ngIf="f.imageUrl.errors?.required">ImageUrl is required.</div>
+      </div>
+  </div>
+
+  <div class="form-group">
+      <label for="price">Price</label>
+      <input
+          formControlName="price"
+          id="price"
+          type="text"
+          [(ngModel)]="editedProductById.price"
+          class="form-control">
+      <div *ngIf="f.price.touched && f.price.invalid" class="alert alert-danger">
+          <div *ngIf="f.price.errors?.required">price is required.</div>
+      </div>
+  </div>
+
+      <button style="margin-top: 10px;" class="btn btn-primary" type="submit" [disabled]="!form.valid">Save</button>
+  </form>
+</div>
